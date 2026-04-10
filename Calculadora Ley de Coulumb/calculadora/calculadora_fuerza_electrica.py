@@ -47,7 +47,7 @@ def calcular_fuerza_neta() -> None:
         x = pedir_numero(f"Posicion X de q{indice} (m): ")
         y = pedir_numero(f"Posicion Y de q{indice} (m): ")
 
-        # El vector r apunta desde la carga fuente hacia la carga objetivo.
+        #el vector r apunta desde la carga fuente hacia la carga objetivo.
         rx = x0 - x
         ry = y0 - y
         distancia = math.sqrt(rx * rx + ry * ry)
@@ -56,14 +56,14 @@ def calcular_fuerza_neta() -> None:
             print("Error: dos cargas no pueden estar en el mismo punto.")
             return
 
-        # Ley de Coulomb: |F| = k |q1 q2| / r^2.
+        #ley de Coulomb: |F| = k |q1 q2| / r^2.
         fuerza_magnitud = constante_coulomb * abs(q * q0) / (distancia * distancia)
 
-        # El vector unitario conserva la direccion del desplazamiento.
+        #el vector unitario conserva la direccion del desplazamiento.
         ux = rx / distancia
         uy = ry / distancia
 
-        # La repulsion sigue el sentido de r; la atraccion invierte ese sentido.
+        #la repulsion sigue el sentido de r; la atraccion invierte ese sentido.
         if q * q0 > 0:
             fx = fuerza_magnitud * ux
             fy = fuerza_magnitud * uy
@@ -71,7 +71,7 @@ def calcular_fuerza_neta() -> None:
             fx = -fuerza_magnitud * ux
             fy = -fuerza_magnitud * uy
 
-        # La fuerza neta se obtiene mediante la suma vectorial de todas las contribuciones.
+        #la fuerza neta se obtiene mediante la suma vectorial de todas las contribuciones.
         fx_total += fx
         fy_total += fy
 
