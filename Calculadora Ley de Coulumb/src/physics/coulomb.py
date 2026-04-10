@@ -28,7 +28,7 @@ def detalle_fuerza_sobre_objetivo_desde_fuente(
 ) -> dict[str, float | str | tuple[float, float]]:
     """Calcula el detalle vectorial de la fuerza ejercida por una fuente sobre la carga objetivo."""
 
-    # El vector v conecta la carga fuente con la carga objetivo y define la linea de accion.
+    #el vector v conecta la carga fuente con la carga objetivo y define la linea de accion.
     vx, vy = _vector_entre_puntos(fuente, objetivo)
     distancia_cuadrada = vx * vx + vy * vy
     if distancia_cuadrada < DISTANCIA_MINIMA:
@@ -37,10 +37,10 @@ def detalle_fuerza_sobre_objetivo_desde_fuente(
     distancia = _longitud_vector(vx, vy)
     mismo_signo = fuente.q * objetivo.q >= 0
 
-    # En repulsion la fuerza sigue a v; en atraccion debe invertirse para apuntar hacia la fuente.
+    #en repulsion la fuerza sigue a v; en atraccion debe invertirse para apuntar hacia la fuente.
     ax, ay = (vx, vy) if mismo_signo else (-vx, -vy)
 
-    # El vector unitario u conserva solo la direccion fisica de la interaccion.
+    #el vector unitario u conserva solo la direccion fisica de la interaccion.
     ux, uy = ax / distancia, ay / distancia
     magnitud_fuerza = CONSTANTE_COULOMB * abs(fuente.q * objetivo.q) / distancia_cuadrada
 
@@ -78,7 +78,7 @@ def fuerza_neta(objetivo: CargaPuntual, fuentes: Iterable[CargaPuntual]) -> tupl
     fy_total = 0.0
 
     for fuente in fuentes:
-        # La fuerza neta resulta de la superposicion de todas las contribuciones parciales.
+        #la fuerza neta resulta de la superposicion de todas las contribuciones parciales.
         fx, fy = fuerza_sobre_objetivo_desde_fuente(objetivo, fuente)
         fx_total += fx
         fy_total += fy
